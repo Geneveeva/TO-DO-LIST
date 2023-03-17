@@ -23,12 +23,16 @@ function newElement() {
     return alert("You must write something!");
   } else {
     const store = localStorage.getItem("todo");
-    let col = JSON.parse(store);
-    exist = col.find((item) => item === inputValue);
-    if(exist) {
-        alert('Item exist already')
-        return
+    let col = []
+    if(store){
+      col = JSON.parse(store);
+      let exist = col.find((item) => item === inputValue);
+      if(exist) {
+          alert('Item exist already')
+          return
+      }
     }
+   
     addToStorage(inputValue);
     populateStoreList(inputValue);
   }
